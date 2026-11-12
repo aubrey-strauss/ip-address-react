@@ -117,6 +117,8 @@ main {
   font-weight: 400;
   color: hsl(0, 0%, 58%);
   font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .result-value {

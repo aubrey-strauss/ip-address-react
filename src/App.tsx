@@ -1,5 +1,13 @@
+import Header from "./components/Header";
+
 function App() {
-  return <h1>IP Address Tracker</h1>;
+  return (
+    <>
+      <Header title="IP Address React">
+        <p>Search from goes here</p>
+      </Header>
+    </>
+  );
 }
 
 export default App;

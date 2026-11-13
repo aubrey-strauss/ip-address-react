@@ -11,12 +11,8 @@ body {
 
 /* ===== HEADER ===== */
 .hero {
-  background-image: url("/images/pattern-bg-desktop.png");
-  background-size: cover;
-  background-position: center;
-  padding-top: 26px;
-  height: 280px;
-  text-align: center;
+  background-image: url("/images/pattern-bg-mobile.png");
+  height: 300px;
 }
 
 .hero h1 {
@@ -102,21 +98,14 @@ main {
   z-index: 1001;
 }
 
-/* Gray lines between results */
-.divider {
-  width: 1px;
-  height: 81px;
-  background-color: hsl(0, 0%, 58%);
-}
-
 .result {
   flex: 1;
-  /* Gray line before every result except the first */
-  /*Why: A + B = “a B right after an A,” so the first box gets no line */
-  .result + .result {
-    border-left: 1px solid hsl(0, 0%, 58%);
-    padding-left: 32px;
-  }
+}
+
+/* Gray line before every result except the first */
+.result + .result {
+  border-left: 1px solid hsl(0, 0%, 58%);
+  padding-left: 32px;
 }
 
 .result-label {
@@ -144,15 +133,6 @@ main {
   .hero {
     background-image: url("/images/pattern-bg-mobile.png");
     height: 300px;
-    .result + .result {
-      border-left: none;
-      /*Why: phones stack the boxes, so no side lines are needed*/
-      padding-left: 0;
-      .result + .result {
-        border-left: none;
-        padding-left: 0;
-      }
-    }
   }
 
   .hero h1 {
@@ -173,11 +153,12 @@ main {
     margin-right: 24px;
   }
 
-  .divider {
-    display: none;
+  /* Gray line before every result except the first */
+  .result + .result {
+    border-left: none;
+    padding-left: 0;
   }
 }
-
 /* ===== FOOTER ===== */
 .attribution {
   text-align: center;

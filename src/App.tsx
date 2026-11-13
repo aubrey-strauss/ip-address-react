@@ -4,6 +4,7 @@ import SearchForm from "./components/SearchForm";
 import InfoItem from "./components/InfoItem";
 import InfoPanel from "./components/InfoPanel";
 import { useIpLookup } from "./hooks/useIpLookup";
+import MapView from "./components/MapView";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -35,8 +36,7 @@ function App() {
             <InfoItem label="ISP" value={data.isp} />
           </InfoPanel>
         )}
-        {/* Placeholder until the real map in Phase 5 */}
-        <div className="map" style={{ background: "#ddd" }}></div>
+        {data && <MapView lat={data.location.lat} lng={data.location.lng} />}
       </main>
     </>
   );

@@ -4,6 +4,7 @@ import InfoItem from "./components/InfoItem";
 import InfoPanel from "./components/InfoPanel";
 import type { IpData } from "./types/ipData";
 import { fetchIpData } from "./api/fetchIpData";
+import { useIpLookup } from "./hooks/useIpLookup";
 
 const fakeData: IpData = {
   // placeholder code- swap in real data later
@@ -19,6 +20,8 @@ const fakeData: IpData = {
   isp: "SpaceX Starlink",
 };
 function App() {
+  const { data, loading, error } = useIpLookup("");
+  console.log({ data, loading, error });
   return (
     <>
       <Header title="IP Address React">

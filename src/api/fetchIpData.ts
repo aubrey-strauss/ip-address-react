@@ -1,6 +1,10 @@
-import type { IpData } from "./types/ipData";
+import type { IpData } from "../types/ipData";
 
-export async function fetchIpData(query: string): Promise<IpData> {
+export async function fetchIpData(
+  query: string,
+  signal?: AbortSignal,
+): Promise<IpData> {
+  // a signal is a “stop” button we can press to cancel a request
   const params = new URLSearchParams({
     apiKey: import.meta.env.VITE_IPIFY_KEY,
   });
@@ -10,6 +14,7 @@ export async function fetchIpData(query: string): Promise<IpData> {
   }
   const response = await fetch(
     `https://geo.ipify.org/api/v2/country,city?${params}`,
+    { signal }, // now if we press “stop,” the request is cancelled before it wastes credits
   );
 
   if (!response.ok) {

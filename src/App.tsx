@@ -2,9 +2,10 @@ import Header from "./components/Header";
 import SearchForm from "./components/SearchForm";
 import InfoItem from "./components/InfoItem";
 import InfoPanel from "./components/InfoPanel";
+import type { IpData } from "./types/ipData";
 
-// placeholder code- swap in real data later
-const fakeData = {
+const fakeData: IpData = {
+  // placeholder code- swap in real data later
   ip: "192.212.174.101",
   location: {
     city: "Brooklyn",
@@ -16,7 +17,6 @@ const fakeData = {
   },
   isp: "SpaceX Starlink",
 };
-
 function App() {
   return (
     <>
@@ -26,10 +26,10 @@ function App() {
         />
       </Header>
       <main>
-        {/*main is the page’s main content, and your CSS positions the card from it. The 4 InfoItems become InfoPanel’s children */}
+        {/* Card overlaps the banner; InfoItems are its children */}{" "}
         <InfoPanel>
           <InfoItem label="IP Address" value={fakeData.ip} />
-          {/* Why: backticks ` make a template string, which glues text together. Each ${ } drops a value in, giving you “Brooklyn, NY 10001”. */}
+          {/* Template string glues city, region, and zip together */}{" "}
           <InfoItem
             label="Location"
             value={`${fakeData.location.city}, ${fakeData.location.region} ${fakeData.location.postalCode}`}

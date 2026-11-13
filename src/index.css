@@ -73,6 +73,10 @@ body {
   margin-top: 12px;
 }
 
+.status-message {
+  color: white;
+  margin-top: 12px;
+}
 /* ===== RESULTS CARD (overlaps the header by 81px) ===== */
 main {
   position: relative;

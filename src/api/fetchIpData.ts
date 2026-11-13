@@ -1,5 +1,12 @@
 import type { IpData } from "../types/ipData";
 
+// Friendly messages for IPify's error codes
+const errorMessages: Record<number, string> = {
+  403: "API key problem. Check your .env.local file.",
+  422: "We couldn't find that IP address or domain. Check the spelling.",
+  429: "Out of free lookups for now. Please try again later.",
+};
+
 export async function fetchIpData(
   query: string,
   signal?: AbortSignal,
@@ -18,7 +25,10 @@ export async function fetchIpData(
   );
 
   if (!response.ok) {
-    throw new Error(`Lookup failed (status ${response.status})`);
+    throw new Error(
+      errorMessages[response.status] ??
+        "Something went wrong. Please try again.",
+    );
   }
   return response.json();
 }

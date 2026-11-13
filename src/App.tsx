@@ -7,11 +7,17 @@ import { useIpLookup } from "./hooks/useIpLookup";
 
 function App() {
   const [query, setQuery] = useState("");
-  const { data } = useIpLookup(query);
+  const { data, loading, error } = useIpLookup(query);
   return (
     <>
       <Header title="IP Address React">
         <SearchForm onSearch={setQuery} />
+        {loading && <p className="status-message">Looking up...</p>}
+        {error && (
+          <p className="error-message" role="alert">
+            {error}
+          </p>
+        )}
       </Header>
       <main>
         {/* && is conditional rendering-"only show once data exists" */}

@@ -3,6 +3,7 @@ import SearchForm from "./components/SearchForm";
 import InfoItem from "./components/InfoItem";
 import InfoPanel from "./components/InfoPanel";
 import type { IpData } from "./types/ipData";
+import { fetchIpData } from "./api/fetchIpData";
 
 const fakeData: IpData = {
   // placeholder code- swap in real data later
@@ -22,7 +23,9 @@ function App() {
     <>
       <Header title="IP Address React">
         <SearchForm
-          onSearch={(query) => console.log("Searching for:", query)}
+          onSearch={(query) =>
+            fetchIpData(query).then(console.log).catch(console.error)
+          }
         />
       </Header>
       <main>

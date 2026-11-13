@@ -111,6 +111,12 @@ main {
 
 .result {
   flex: 1;
+  /* Gray line before every result except the first */
+  /*Why: A + B = “a B right after an A,” so the first box gets no line */
+  .result + .result {
+    border-left: 1px solid hsl(0, 0%, 58%);
+    padding-left: 32px;
+  }
 }
 
 .result-label {
@@ -133,11 +139,20 @@ main {
 }
 
 /* ===== MOBILE LAYOUT ===== */
-/* Breakpoint with standard Apple mobile/iPad verticle layout */
+/* Breakpoint with standard Apple mobile/iPad vertical layout */
 @media (max-width: 768px) {
   .hero {
     background-image: url("/images/pattern-bg-mobile.png");
     height: 300px;
+    .result + .result {
+      border-left: none;
+      /*Why: phones stack the boxes, so no side lines are needed*/
+      padding-left: 0;
+      .result + .result {
+        border-left: none;
+        padding-left: 0;
+      }
+    }
   }
 
   .hero h1 {

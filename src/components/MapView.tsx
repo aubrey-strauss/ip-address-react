@@ -1,19 +1,29 @@
-// Marker is the pin. L is Leaflet’s own toolbox
-import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import { useEffect } from "react";
+import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+// Black location pin from the design
 const locationIcon = L.icon({
   iconUrl: "/images/icon-location.svg",
   iconSize: [46, 56],
   iconAnchor: [23, 56],
 });
 
-// Props- where to center the map
+// Props: where to center the map
 type MapViewProps = {
   lat: number;
   lng: number;
 };
+
+// Helper: glides the map to a new spot when lat/lng change
+function FlyToLocation({ lat, lng }: MapViewProps) {
+  const map = useMap();
+  useEffect(() => {
+    map.flyTo([lat, lng], 13);
+  }, [map, lat, lng]);
+  return null;
+} // end of FlyToLocation
 
 // Map showing the searched location
 function MapView({ lat, lng }: MapViewProps) {
@@ -29,8 +39,9 @@ function MapView({ lat, lng }: MapViewProps) {
         url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={[lat, lng]} icon={locationIcon} alt="Location marker" />
+      <FlyToLocation lat={lat} lng={lng} />
     </MapContainer>
   );
-}
+} // end of MapView
 
 export default MapView;

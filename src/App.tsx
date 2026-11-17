@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import SearchForm from "./components/SearchForm";
 import InfoItem from "./components/InfoItem";
 import InfoPanel from "./components/InfoPanel";
+import RecentSearches from "./components/RecentSearches";
 
 import MapView from "./components/MapView";
 
@@ -36,6 +37,7 @@ function App() {
           </InfoPanel>
         )}
         {data && <MapView lat={data.location.lat} lng={data.location.lng} />}
+        <RecentSearches />
       </main>
     </>
   );

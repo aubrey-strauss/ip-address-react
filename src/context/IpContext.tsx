@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import { useIpLookup } from "../hooks/useIpLookup";
 import type { IpData } from "../types/ipData";
@@ -8,6 +8,7 @@ type IpContextValue = {
   data: IpData | null;
   loading: boolean;
   error: string | null;
+  history: IpData[];
   search: (query: string) => void;
 };
 // The shared board; empty (null) until the provider fills it
@@ -16,9 +17,19 @@ const IpContext = createContext<IpContextValue | null>(null);
 export function IpProvider({ children }: { children: ReactNode }) {
   const [query, setQuery] = useState("");
   const { data, loading, error } = useIpLookup(query);
+  const [history, setHistory] = useState<IpData[]>([]);
+  // New result goes to the front: no duplicates, max 5
+  useEffect(() => {
+    if (!data) return;
+    setHistory((prev) =>
+      [data, ...prev.filter((item) => item.ip !== data.ip)].slice(0, 5),
+    );
+  }, [data]);
 
   return (
-    <IpContext.Provider value={{ data, loading, error, search: setQuery }}>
+    <IpContext.Provider
+      value={{ data, loading, error, history, search: setQuery }}
+    >
       {children}
     </IpContext.Provider>
   );

@@ -1,18 +1,17 @@
-import { useState } from "react";
+import { useIpContext } from "./context/IpContext";
 import Header from "./components/Header";
 import SearchForm from "./components/SearchForm";
 import InfoItem from "./components/InfoItem";
 import InfoPanel from "./components/InfoPanel";
-import { useIpLookup } from "./hooks/useIpLookup";
+
 import MapView from "./components/MapView";
 
 function App() {
-  const [query, setQuery] = useState("");
-  const { data, loading, error } = useIpLookup(query);
+  const { data, loading, error, search } = useIpContext();
   return (
     <>
       <Header title="IP Address React">
-        <SearchForm onSearch={setQuery} />
+        <SearchForm onSearch={search} />
         {loading && <p className="status-message">Looking up...</p>}
         {error && (
           <p className="error-message" role="alert">

@@ -1,5 +1,11 @@
 import { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  useMap,
+  ZoomControl,
+} from "react-leaflet"; //Zoom control added for Mobile layout
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -33,6 +39,7 @@ function MapView({ lat, lng }: MapViewProps) {
       center={[lat, lng]}
       zoom={13}
       zoomControl={false}
+      scrollWheelZoom={false}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -40,6 +47,7 @@ function MapView({ lat, lng }: MapViewProps) {
       />
       <Marker position={[lat, lng]} icon={locationIcon} alt="Location marker" />
       <FlyToLocation lat={lat} lng={lng} />
+      <ZoomControl position="bottomright" />
     </MapContainer>
   );
 } // end of MapView

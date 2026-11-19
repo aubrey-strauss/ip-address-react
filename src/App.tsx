@@ -30,7 +30,9 @@ function App() {
       <main>
         {/* && is conditional rendering-"only show once data exists" */}
         {data && (
-          <InfoPanel>
+          <InfoPanel key={data.ip}>
+            {" "}
+            {/* fix garbled text on safari mobile*/}
             <InfoItem label="IP Address" value={data.ip} />
             <InfoItem
               label="Location"

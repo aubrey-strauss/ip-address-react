@@ -104,6 +104,8 @@ main {
   /* Decides what is on top.
   Leaflet uses numbers up to 1000 for its map pieces, so 1001 puts the card above all of them */
   z-index: 1001;
+  /* Own drawing layer, so Safari redraws it cleanly over the moving map */
+  transform: translateZ(0);
 }
 
 .result {
@@ -230,7 +232,7 @@ main {
 
   /* Shorter map so recent searches show sooner */
   .map {
-    height: 300px;
+    height: 420px;
   }
 }
 /* ===== FOOTER ===== */

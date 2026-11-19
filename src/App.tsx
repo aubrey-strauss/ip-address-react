@@ -11,7 +11,7 @@ function App() {
   const { data, loading, error, search } = useIpContext();
   return (
     <>
-      <Header title="IP Address React">
+      <Header title="IP Address Tracker">
         <SearchForm onSearch={search} />
         {loading && (
           <p className="status-message" role="status">

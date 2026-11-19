@@ -11,8 +11,12 @@ body {
 
 /* ===== HEADER ===== */
 .hero {
-  background-image: url("/images/pattern-bg-mobile.png");
-  height: 300px;
+  background-image: url("/images/pattern-bg-desktop.png");
+  background-size: cover;
+  background-position: center;
+  padding-top: 26px;
+  height: 280px;
+  text-align: center;
 }
 
 .hero h1 {
@@ -187,38 +191,36 @@ main {
     margin-right: 24px;
   }
 
-  /* Stack the page: card, then recent searches, then map */
-  main {
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Card joins the normal flow, still overlapping the banner by 81px */
+  /* Compact card: 2 x 2 grid instead of 4 stacked rows */
   .info-container {
-    position: relative;
-    top: auto;
-    margin: -81px 24px 0;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 20px;
     text-align: center;
-    gap: 24px;
+    margin-left: 24px;
+    margin-right: 24px;
   }
 
-  /* Phones stack the boxes, so no side lines */
+  /* Smaller text so the card stays short */
+  .result-label {
+    font-size: 10px;
+  }
+
+  .result-value {
+    font-size: 16px;
+    padding-top: 6px;
+  }
+
+  /* No side divider lines on phones */
   .result + .result {
     border-left: none;
     padding-left: 0;
   }
 
-  /* Recent searches right under the card */
-  .recent {
-    order: 1;
-  }
-
-  /* Shorter map, shown last */
+  /* Shorter map so recent searches show sooner */
   .map {
-    order: 2;
-    height: 350px;
+    height: 300px;
   }
 }
 /* ===== FOOTER ===== */

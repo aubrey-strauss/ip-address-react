@@ -47,7 +47,8 @@ function MapView({ lat, lng }: MapViewProps) {
       />
       <Marker position={[lat, lng]} icon={locationIcon} alt="Location marker" />
       <FlyToLocation lat={lat} lng={lng} />
-      <ZoomControl position="bottomright" />
+      <ZoomControl position="bottomleft" />{" "}
+      {/*//changed location bc it was covered by Netlify label */}
     </MapContainer>
   );
 } // end of MapView

@@ -13,7 +13,14 @@ function App() {
     <>
       <Header title="IP Address React">
         <SearchForm onSearch={search} />
-        {loading && <p className="status-message">Looking up...</p>}
+        {loading && (
+          <p className="status-message" role="status">
+            Looking up…
+          </p>
+        )}
+        {/* //role="status" is the gentle version of role="alert".
+         It announces “Looking up…” without interrupting,
+          while errors (alert) interrupt right away because they matter more.// */}
         {error && (
           <p className="error-message" role="alert">
             {error}

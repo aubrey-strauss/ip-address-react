@@ -191,6 +191,16 @@ main {
     margin-right: 24px;
   }
 
+  /* Typed text 16px (iPhones zoom in on anything smaller) */
+  .search-input {
+    font-size: 16px;
+  }
+
+  /* Smaller hint text so the whole sentence fits */
+  .search-input::placeholder {
+    font-size: 14px;
+  }
+
   /* Compact card: 2 x 2 grid instead of 4 stacked rows */
   .info-container {
     display: grid;

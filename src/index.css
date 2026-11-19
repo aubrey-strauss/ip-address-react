@@ -130,7 +130,7 @@ main {
 .map {
   height: 526px;
 }
-/* ===== RECENTS (new addition not part of original project) =====*/
+/* ===== RECENT (new addition not part of original project) =====*/
 /* colors taken from original project */
 .recent {
   max-width: 1111px; /* same max width as card */

@@ -130,6 +130,43 @@ main {
 .map {
   height: 526px;
 }
+/* ===== RECENTS (new addition not part of original project) =====*/
+/* colors taken from original project */
+.recent {
+  max-width: 1111px; /* same max width as card */
+  margin: 24px auto;
+  padding: 0 24px;
+}
+
+.recent-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: hsl(0, 0%, 17%);
+}
+
+.recent-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.recent-button {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 8px 14px;
+  border: 1px solid hsl(0, 0%, 58%);
+  border-radius: 999px; /* Pill button shape */
+  background: white;
+  cursor: pointer;
+}
+
+.recent-button:hover,
+.recent-button:focus-visible {
+  background: hsl(0, 0%, 17%);
+  color: white;
+}
 
 /* ===== MOBILE LAYOUT ===== */
 /* Breakpoint with standard Apple mobile/iPad vertical layout */
@@ -158,6 +195,8 @@ main {
   }
 
   /* Gray line before every result except the first */
+  /* It means: “a .result that comes right after another .result.”
+The + is called the adjacent sibling combinator */
   .result + .result {
     border-left: none;
     padding-left: 0;

@@ -8,7 +8,7 @@ type IpContextValue = {
   data: IpData | null;
   loading: boolean;
   error: string | null;
-  history: IpData[];
+  history: IpData[];// added history
   search: (query: string) => void;
 };
 // The shared board; empty (null) until the provider fills it
@@ -28,7 +28,7 @@ export function IpProvider({ children }: { children: ReactNode }) {
 
   return (
     <IpContext.Provider
-      value={{ data, loading, error, history, search: setQuery }}
+      value={{ data, loading, error, history, search: setQuery }} //added history
     >
       {children}
     </IpContext.Provider>

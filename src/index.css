@@ -169,15 +169,13 @@ main {
 }
 
 /* ===== MOBILE LAYOUT ===== */
-/* Breakpoint with standard Apple mobile/iPad vertical layout */
+/* Phones and tablets up to 768px wide */
 @media (max-width: 768px) {
+  /* Banner grows with its content; bottom space = card overlap + small gap */
   .hero {
     background-image: url("/images/pattern-bg-mobile.png");
-    height: 300px;
-    /* Shorter map on phones so content below it is reachable */
-    .map {
-      height: 400px;
-    }
+    height: auto;
+    padding-bottom: 110px;
   }
 
   .hero h1 {
@@ -189,21 +187,38 @@ main {
     margin-right: 24px;
   }
 
+  /* Stack the page: card, then recent searches, then map */
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Card joins the normal flow, still overlapping the banner by 81px */
   .info-container {
+    position: relative;
+    top: auto;
+    margin: -81px 24px 0;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 24px;
-    margin-left: 24px;
-    margin-right: 24px;
   }
 
-  /* Gray line before every result except the first */
-  /* It means: “a .result that comes right after another .result.”
-The + is called the adjacent sibling combinator */
+  /* Phones stack the boxes, so no side lines */
   .result + .result {
     border-left: none;
     padding-left: 0;
+  }
+
+  /* Recent searches right under the card */
+  .recent {
+    order: 1;
+  }
+
+  /* Shorter map, shown last */
+  .map {
+    order: 2;
+    height: 350px;
   }
 }
 /* ===== FOOTER ===== */
